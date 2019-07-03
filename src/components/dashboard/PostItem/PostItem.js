@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './PostItem.scss';
+import moment from 'moment';
 
 const PostItem = ( { post } ) => {
 
@@ -10,7 +11,7 @@ const PostItem = ( { post } ) => {
         <div className="post">
             <Link to={`/post/${id}`}>{title}</Link>
             <h4>Posted by {firstName} {lastName}</h4>
-            {/* <p>{createdAt}</p> */}
+            <p>{ moment(createdAt.toDate()).calendar() }</p>
         </div>
     );
 };
