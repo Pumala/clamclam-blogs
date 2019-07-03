@@ -25,7 +25,6 @@ class CreatePost extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log('NEW STATE:', this.state);
 
         const { title, content } = this.state;
 
@@ -36,6 +35,9 @@ class CreatePost extends Component {
         } else {
             // create new post
             this.props.createPost(this.state);
+
+            // redirect user to dashboard page 
+            this.props.history.push('/');
         }
 
     }
