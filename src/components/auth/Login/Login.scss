@@ -1,0 +1,19 @@
+@import '../../../styles/styles.scss';
+
+form {
+    @extend %form-auth;
+
+    h2 {
+        @extend %form-title;
+    }
+    div {
+        margin-bottom: 20px;
+        input {
+            @extend %form-input;
+        }
+    }
+
+    button[type="submit"] {
+        @extend %submit-btn;
+    }
+}

@@ -1,0 +1,26 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Navbar.scss';
+import SignedInLinks from '../SignedInLinks/SignedInLinks';
+import SignedOutLinks from '../SignedOutLinks/SignedOutLinks';
+import { connect } from 'react-redux';
+import { signInUser } from '../../../store/actions/authActions';
+
+const Navbar = () => {
+    return (
+        <nav>
+            <Link className="brand-logo" to="/">ClamClam Blogs</Link>
+            <SignedInLinks />
+            <SignedOutLinks />
+        </nav>
+    );
+};
+
+const mapStateToProps = state => {
+    console.log('state in navbar...', state);
+    return {
+
+    }
+}
+
+export default  connect(mapStateToProps)(Navbar);

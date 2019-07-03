@@ -1,0 +1,10 @@
+@import '../../../styles/styles.scss';
+
+form {
+    textarea {
+        width: 100%;
+    }
+    button[type="submit"] {
+        @extend %submit-btn;
+    }
+}

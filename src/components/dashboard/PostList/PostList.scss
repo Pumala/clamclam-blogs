@@ -1,0 +1,11 @@
+@import '../../../styles/styles.scss';
+
+.post-list {
+    width: 50%;
+    display: inline-block;
+    height: 100vh;
+    padding: 20px;
+    .post {
+        margin-bottom: 20px;
+    }
+}

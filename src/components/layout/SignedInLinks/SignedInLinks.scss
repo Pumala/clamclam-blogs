@@ -1,0 +1,10 @@
+@import '../../../styles/styles.scss';
+
+ul {
+    @extend %nav-links;
+    li {
+        a {
+            @extend %nav-link;
+        }
+    }
+}
