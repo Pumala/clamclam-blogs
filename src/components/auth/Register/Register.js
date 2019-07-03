@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Register.scss';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { signUpUser } from '../../../store/actions/authActions';
 class Register extends Component {
 
     state = {
@@ -27,13 +28,19 @@ class Register extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log('NEW STATE:', this.state);
+        console.log('NEW PROPS IN REGISTER:', this.props);
 
-        const { password, confirmPassword } = this.state;
+        const { firstName, lastName, email, password, confirmPassword } = this.state;
 
         // handle validation
         if (password === confirmPassword) {
             // register successfully / redirect to dashboard
+            this.props.signUpUser({
+                firstName,
+                lastName,
+                email,
+                password
+            });
         } else {
             // prevent form submission and display error to user
         }
@@ -42,7 +49,7 @@ class Register extends Component {
 
     render() {
 
-        const { auth } = this.props;
+        const { auth, authError } = this.props;
 
         if (auth.uid) {
             return <Redirect to="/"></Redirect>
@@ -73,9 +80,17 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log('state in REGISTER', state);
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        authError: state.auth.message
     }
 }
 
-export default connect(mapStateToProps)(Register);
+const mapDispatchToProps = dispatch => {
+    return {
+        signUpUser : (newUserInfo) => dispatch(signUpUser(newUserInfo))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
