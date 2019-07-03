@@ -22,3 +22,23 @@ export const signInUser = (credentials) => {
         })
     }
 }
+
+export const signOutUser = () => {
+    return (dispatch, getState, { getFirebase }) => {
+        console.log('HELP ME LOG OUT STATE::', getState());
+        const firebase = getFirebase();
+
+        // sign out user
+        firebase.auth().signOut().then(() => {
+            console.log('logout success YES!');
+            dispatch({
+                type: 'LOGOUT_SUCCESS'
+            });
+        }).catch(err => {
+            console.log('logout ERROR NOOOOO!', err);
+            dispatch({
+                type: 'LOGOUT_ERROR'
+            });
+        })
+    }
+}

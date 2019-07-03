@@ -5,11 +5,11 @@ import { firestoreReducer } from 'redux-firestore';
 import { firebaseReducer } from 'react-redux-firebase';
 
 const rootReducer = combineReducers({
-    authReducer,
-    postsReducer,
+    auth: authReducer,
+    posts: postsReducer,
     // adding premade firestore reducer will sync the firestore data with the store state
-    firestoreReducer,
-    firebaseReducer
+    firestore: firestoreReducer,
+    firebase: firebaseReducer
 });
 
 

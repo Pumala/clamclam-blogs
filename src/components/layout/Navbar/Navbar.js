@@ -6,12 +6,16 @@ import SignedOutLinks from '../SignedOutLinks/SignedOutLinks';
 import { connect } from 'react-redux';
 import { signInUser } from '../../../store/actions/authActions';
 
-const Navbar = () => {
+const Navbar = (props) => {
+
+    const { isUserSignedIn } = props;
+
     return (
         <nav>
             <Link className="brand-logo" to="/">ClamClam Blogs</Link>
-            <SignedInLinks />
-            <SignedOutLinks />
+            {
+                isUserSignedIn ? <SignedInLinks /> : <SignedOutLinks />
+            }
         </nav>
     );
 };
@@ -19,7 +23,7 @@ const Navbar = () => {
 const mapStateToProps = state => {
     console.log('state in navbar...', state);
     return {
-
+        isUserSignedIn : !state.firebase.auth.isEmpty ? true : false
     }
 }
 

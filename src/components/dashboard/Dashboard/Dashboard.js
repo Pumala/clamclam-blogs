@@ -5,31 +5,32 @@ import './Dashboard.scss';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
+import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component {
     render() {
 
-        const { posts } = this.props;
+        const { posts, auth } = this.props;
 
-        return (
-            <div className="dashboard">
-                <PostList posts={posts} />
-                <Notifications />
-            </div>
-        );
+        console.log('AUTH???', auth);
+
+        if (!auth.uid) {
+            return <Redirect to="/login"></Redirect>
+        } else {
+            return (
+                <div className="dashboard">
+                    <PostList posts={posts} />
+                    <Notifications />
+                </div>
+            );
+        }
     }
 }
 
 const mapStateToProps = state => {
-    // console.log('STATE in dash:::', state.firestoreReducer);
-    if (state.firestoreReducer.ordered && state.firestoreReducer.ordered.posts) {
-        return {
-            posts: state.firestoreReducer.ordered.posts
-        }
-    } else {
-        return {
-            posts: state.postsReducer.posts
-        }
+    return {
+        posts: state.firestore.ordered.posts,
+        auth: state.firebase.auth
     }
 }
 

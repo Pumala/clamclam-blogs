@@ -6,7 +6,7 @@ const PostList = ({ posts }) => {
 
     console.log('post list', posts);
 
-    const list = (
+    const list = posts ? (
         posts.map((post, id) =>
             (
                 <PostItem key={id} className="post"
@@ -14,7 +14,7 @@ const PostList = ({ posts }) => {
                 />
             )
         )
-    )
+    ) : null;
 
     if (posts && posts.length > 0) {
         return (

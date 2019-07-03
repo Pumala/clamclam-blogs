@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { signInUser } from '../../../store/actions/authActions';
 import { connect } from 'react-redux';
-
+import { Redirect } from 'react-router-dom';
 class Login extends Component {
 
     state = {
@@ -30,27 +30,34 @@ class Login extends Component {
     }
 
     render() {
-        return (
-            <form>
-                <h2>Login</h2>
-                <div>
-                    <input type="text" placeholder="Email" name="email" onChange={this.handleChange} />
-                </div>
-                <div>
-                    <input type="password" placeholder="Password" name="password" onChange={this.handleChange} />
-                </div>
-                <button name="submit" type="submit" onClick={this.handleSubmit}>Submit</button>
-            </form>
-        );
+
+        const { auth } = this.props;
+
+        if (auth.uid) {
+            return <Redirect to="/"></Redirect>
+        } else {
+            return (
+                <form>
+                    <h2>Login</h2>
+                    <div>
+                        <input type="text" placeholder="Email" name="email" onChange={this.handleChange} />
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Password" name="password" onChange={this.handleChange} />
+                    </div>
+                    <button name="submit" type="submit" onClick={this.handleSubmit}>Submit</button>
+                </form>
+            );
+        }
+        
     }
 }
 
 const mapStateToProps = (state) => {
 
-    console.log('state in LOGIN....', state);
-
     return {
-        authError: state.authReducer.authError
+        auth: state.firebase.auth,
+        authError: state.auth.authError
     }
 }
 

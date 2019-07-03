@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createPost } from '../../../store/actions/postActions';
 import { connect } from 'react-redux';
 import './CreatePost.scss';
-
+import { Redirect } from 'react-router-dom';
 class CreatePost extends Component {
 
     state = {
@@ -41,18 +41,32 @@ class CreatePost extends Component {
     }
 
     render() {
-        return (
-            <form>
-                <h2>Create New Post</h2>
-                <div>
-                    <input type="text" name="title" placeholder="Title" onChange={this.handleChange} />
-                </div>
-                <div>
-                    <textarea name="content" cols="30" rows="10" onChange={this.handleChange}></textarea>
-                </div>
-                <button name="submit" type="submit" onClick={this.handleSubmit}>Create</button>
-            </form>
-        );
+
+        const { auth } = this.props;
+
+        if (!auth.uid) {
+            return <Redirect to="/login"></Redirect>
+        } else {
+            return (
+                <form>
+                    <h2>Create New Post</h2>
+                    <div>
+                        <input type="text" name="title" placeholder="Title" onChange={this.handleChange} />
+                    </div>
+                    <div>
+                        <textarea name="content" cols="30" rows="10" onChange={this.handleChange}></textarea>
+                    </div>
+                    <button name="submit" type="submit" onClick={this.handleSubmit}>Create</button>
+                </form>
+            );
+        }
+
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        auth: state.firebase.auth
     }
 }
 
@@ -63,4 +77,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 // since we're not using mapStateToProps we pass in null
-export default connect(null, mapDispatchToProps)(CreatePost);
+export default connect(mapStateToProps, mapDispatchToProps)(CreatePost);
