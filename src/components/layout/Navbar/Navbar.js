@@ -8,22 +8,23 @@ import { signInUser } from '../../../store/actions/authActions';
 
 const Navbar = (props) => {
 
-    const { isUserSignedIn } = props;
+    const { isUserSignedIn, profile } = props;
 
     return (
         <nav>
             <Link className="brand-logo" to="/">ClamClam Blogs</Link>
             {
-                isUserSignedIn ? <SignedInLinks /> : <SignedOutLinks />
+                isUserSignedIn ? <SignedInLinks profile={ profile } /> : <SignedOutLinks />
             }
         </nav>
     );
 };
 
 const mapStateToProps = state => {
-    console.log('state in navbar...', state);
+    console.log('state in NAV NAV NAV...', state);
     return {
-        isUserSignedIn : !state.firebase.auth.isEmpty ? true : false
+        isUserSignedIn : !state.firebase.auth.isEmpty ? true : false,
+        profile: state.firebase.profile
     }
 }
 

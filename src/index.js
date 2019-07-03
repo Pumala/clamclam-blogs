@@ -21,7 +21,9 @@ const store = createStore(
     // compose with store enhancers
     compose(
         applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore})),
-        reactReduxFirebase(firebaseConfig, { attachAuthIsReady : true }),
+        // attachAuthIsReady : set to true so that we can then check when auth is complete
+        // useFirestoreForProfile : set to true so that we can sync the user document onto the firebase profile property
+        reactReduxFirebase(firebaseConfig, { attachAuthIsReady : true, useFirestoreForProfile: true, userProfile: 'users' }),
         reduxFirestore(firebaseConfig)
     )
 );

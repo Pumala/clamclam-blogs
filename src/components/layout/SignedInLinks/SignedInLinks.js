@@ -6,11 +6,7 @@ import { signOutUser } from '../../../store/actions/authActions';
 
 const SignedInLinks = (props) => {
 
-    // const logoutUser = () => {
-
-    //     // console.log('WANT TO LOGOUT!!!!', props.email);
-    //     props.signOutUser(signOutUser())
-    // }
+    const { signOutUser, profile } = props;
 
     return (
         <ul>
@@ -21,10 +17,10 @@ const SignedInLinks = (props) => {
                 <NavLink to="/create">Create Post</NavLink>
             </li>
             <li>
-                <button onClick={props.signOutUser}>Log Out</button>
+                <button onClick={ signOutUser }>Log Out</button>
             </li>
             <li>
-                <NavLink to="/">ClamClam</NavLink>
+                <NavLink to="/">{ profile.initials }</NavLink>
             </li>
         </ul>
     );
