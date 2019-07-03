@@ -12,7 +12,6 @@ class CreatePost extends Component {
 
     handleChange = e => {
         e.persist();
-        // console.log('e:', e.target.name);
 
         const inputName = e.target.name;
 

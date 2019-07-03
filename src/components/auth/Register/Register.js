@@ -15,7 +15,6 @@ class Register extends Component {
 
     handleChange = e => {
         e.persist();
-        // console.log('e:', e.target.name);
 
         const inputName = e.target.name;
 
@@ -28,7 +27,6 @@ class Register extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log('NEW PROPS IN REGISTER:', this.props);
 
         const { firstName, lastName, email, password, confirmPassword } = this.state;
 
@@ -80,7 +78,6 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log('state in REGISTER', state);
     return {
         auth: state.firebase.auth,
         authError: state.auth.message

@@ -11,7 +11,6 @@ class Login extends Component {
 
     handleChange = e => {
         e.persist();
-        // console.log('e:', e.target.name);
 
         const inputName = e.target.name;
 
@@ -24,7 +23,6 @@ class Login extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log('NEW STATE:', this.state);
 
         this.props.signInUser(this.state);
     }

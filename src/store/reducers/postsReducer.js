@@ -1,15 +1,24 @@
 const defaultState = {
-    posts: []
+    postErr: null
 };
 
 const postsReducer = (state = defaultState, action) => {
     switch(action.type) {
-        case 'CREATE_POST':
-            return state;
+        case 'CREATE_POST_SUCCESS':
+            return {
+                ...state,
+                postErr: null
+            };
         case 'CREATE_POST_ERROR':
-            return state;
+            return {
+                ...state,
+                postErr: action.err.message
+            };
         default:
-            return state
+            return {
+                ...state,
+                postErr: null
+            };
 
     }
 };

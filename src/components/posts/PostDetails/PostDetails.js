@@ -27,8 +27,6 @@ const PostDetails = (props) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    console.log('CURR STATE:', state);
-    console.log('OWD PROPS:', ownProps);
     const postId = ownProps.match.params.id;
     const posts = state.firestore.data.posts;
     const post = posts ? posts[postId] : '';

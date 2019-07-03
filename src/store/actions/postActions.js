@@ -1,5 +1,4 @@
 export const createPost = (post) => {
-    console.log('dispatching away 1:', post);
     /*
         using thunk middleware we halt the dispatch
         action creators return a function that has 
@@ -7,7 +6,6 @@ export const createPost = (post) => {
     */
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         // make async call to database
-        console.log('CREATE PLEASE:', getState());
 
         const firestore = getFirestore();
         const profile = getState().firebase.profile;
@@ -22,11 +20,14 @@ export const createPost = (post) => {
         }).then(res => {
             // then proceed with dispatch
             dispatch({
-                type: 'CREATE_POST',
+                type: 'CREATE_POST_SUCCESS',
                 post
             });
         }).catch(err => {
-            console.log('error alert..', err);
+            dispatch({
+                type: 'CREATE_POST_ERROR',
+                err
+            });
         });
     }
 }

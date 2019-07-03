@@ -21,7 +21,6 @@ const Navbar = (props) => {
 };
 
 const mapStateToProps = state => {
-    console.log('state in NAV NAV NAV...', state);
     return {
         isUserSignedIn : !state.firebase.auth.isEmpty ? true : false,
         profile: state.firebase.profile

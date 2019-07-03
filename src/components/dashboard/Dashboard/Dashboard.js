@@ -12,8 +12,6 @@ class Dashboard extends Component {
 
         const { posts, auth } = this.props;
 
-        console.log('AUTH???', auth);
-
         if (!auth.uid) {
             return <Redirect to="/login"></Redirect>
         } else {

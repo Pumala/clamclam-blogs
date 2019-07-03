@@ -4,8 +4,6 @@ import './PostList.scss';
 
 const PostList = ({ posts }) => {
 
-    console.log('post list', posts);
-
     const list = posts ? (
         posts.map((post, id) =>
             (
