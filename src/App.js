@@ -8,6 +8,7 @@ import Login from '../src/components/auth/Login/Login';
 import Register from '../src/components/auth/Register/Register';
 import CreatePost from '../src/components/posts/CreatePost/CreatePost';
 import Profile from '../src/components/profile/Profile/Profile';
+import NotFound from '../src/components/not-found/NotFound/NotFound';
 
 import './App.scss';
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/create" component={CreatePost} />
             <Route path="/post/:id" component={PostDetails} />
             <Route path="/profile/:id" component={Profile} />
+            <Route component={NotFound} />
           </Switch>
         </div>
       </div>
