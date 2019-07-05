@@ -1,11 +1,17 @@
+body {
+    font-family: 'Lato', sans-serif;    
+}
+
 h1, h2, h3, h4, h5, h6, p {
     margin: 0;
+    font-family: 'Lato', sans-serif;    
 }
 
 a {
     text-decoration: none;
     color: #000;
     display: inline-block;
+    font-family: 'Lato', sans-serif;    
 }
 
 ul {
@@ -17,7 +23,7 @@ li {
     display: inline-block;
 }
 
-div, input, textarea {
+div, input, textarea, nav, a {
     box-sizing: border-box;
     outline: none;
 }

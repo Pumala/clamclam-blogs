@@ -30,4 +30,30 @@ export const createPost = (post) => {
             });
         });
     }
+};
+
+export const getUserPosts = () => {
+    return (dispatch, getState, { getFirestore }) => {
+
+        const firestore = getFirestore();
+        const authorId = getState().firebase.auth.uid;
+        
+        firestore.collection('posts').get()
+            .then((snapshot) => {
+                const userPosts = snapshot.docs.filter(doc => {
+                    return doc.data().authorId === authorId
+                }).map(doc => {
+                    return doc.data()
+                });
+
+                dispatch({
+                    type: 'GET_USER_POSTS',
+                    userPosts
+                });
+            })
+            .catch(err => {
+                console.log('err retrieving posts..', err)
+            });
+
+    }
 }

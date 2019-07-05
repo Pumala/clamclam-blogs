@@ -23,7 +23,7 @@ const authReducer = (state = defaultState, action) => {
         default:
             return {
                 ...state,
-                authError: null
+                authError: 'umm'
             }
 
     }

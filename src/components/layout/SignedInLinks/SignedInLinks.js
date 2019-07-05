@@ -6,24 +6,27 @@ import { signOutUser } from '../../../store/actions/authActions';
 
 const SignedInLinks = (props) => {
 
-    const { signOutUser, profile } = props;
+    const { signOutUser, auth, profile } = props;
 
     return (
         <ul>
             <li>
-                <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
                 <NavLink to="/create">Create Post</NavLink>
             </li>
             <li>
-                <button onClick={ signOutUser }>Log Out</button>
+                <a onClick={ signOutUser }>Log Out</a>
             </li>
             <li>
-                <NavLink to="/">{ profile.initials }</NavLink>
+                <NavLink to={`/profile/${auth.uid}`}>Profile</NavLink>
             </li>
         </ul>
     );
+}
+
+const mapStateToProps = state => {
+    return {
+        auth: state.firebase.auth
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -32,4 +35,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(SignedInLinks);
+export default connect(mapStateToProps, mapDispatchToProps)(SignedInLinks);

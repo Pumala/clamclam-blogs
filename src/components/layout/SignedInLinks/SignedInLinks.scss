@@ -1,10 +1,12 @@
 @import '../../../styles/styles.scss';
 
 ul {
-    @extend %nav-links;
+    @extend %nav-list;
     li {
+        @extend %nav-links;
         a {
             @extend %nav-link;
+            @extend %black-border-bottom;
         }
     }
 }

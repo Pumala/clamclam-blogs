@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.scss';
 import SignedInLinks from '../SignedInLinks/SignedInLinks';
@@ -6,18 +6,38 @@ import SignedOutLinks from '../SignedOutLinks/SignedOutLinks';
 import { connect } from 'react-redux';
 import { signInUser } from '../../../store/actions/authActions';
 
-const Navbar = (props) => {
+class Navbar extends Component {
 
-    const { isUserSignedIn, profile } = props;
+    state = {
+        showNavLinks: false
+    }
 
-    return (
-        <nav>
-            <Link className="brand-logo" to="/">ClamClam Blogs</Link>
-            {
-                isUserSignedIn ? <SignedInLinks profile={ profile } /> : <SignedOutLinks />
-            }
-        </nav>
-    );
+    toggleNavLinksView = () => {
+        this.setState({
+            showNavLinks: !this.state.showNavLinks
+        })
+    }
+
+    render() {
+        const { isUserSignedIn, profile } = this.props;
+
+        const { showNavLinks } = this.state;
+
+        return (
+            <nav>
+                <div className="wrapper">
+                    <Link className="brand-logo" to="/">ClamClam Blogs</Link>
+                    {
+                        !showNavLinks ? <i className="fas fa-bars" onClick={this.toggleNavLinksView}></i> : <i className="fas fa-times" onClick={this.toggleNavLinksView}></i>
+                    }
+                </div>
+                {
+                    !showNavLinks ? null : isUserSignedIn ? <SignedInLinks profile={ profile } /> : <SignedOutLinks />
+                }
+            </nav>
+        );
+    }
+
 };
 
 const mapStateToProps = state => {

@@ -55,7 +55,7 @@ class CreatePost extends Component {
                         <input type="text" name="title" placeholder="Title" onChange={this.handleChange} />
                     </div>
                     <div>
-                        <textarea name="content" cols="30" rows="10" onChange={this.handleChange}></textarea>
+                        <textarea name="content" onChange={this.handleChange}></textarea>
                     </div>
                     <button name="submit" type="submit" onClick={this.handleSubmit}>Create</button>
                 </form>
@@ -66,6 +66,7 @@ class CreatePost extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log('state in create post:', state);
     return {
         auth: state.firebase.auth
     }
