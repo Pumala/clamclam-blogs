@@ -15,11 +15,16 @@
     border-bottom: .25px solid #222;
 }
 
+%black-border-top {
+    border-top: .25px solid #222;
+}
+
 // form styles
 %form-auth {
-    padding: 10px;
+    // padding: 10px;
     max-width: 400px;
     margin: 0 auto;
+    padding: 20px;
 }
 
 %form-title {
@@ -44,4 +49,9 @@
     color: #fff;
     font-size: 16px;
     font-weight: bold;
+}
+
+%dash-headers {
+    margin-bottom: 30px;
+    font-size: 32px;
 }

@@ -17,8 +17,13 @@ class Dashboard extends Component {
         } else {
             return (
                 <div className="dashboard">
-                    <PostList posts={posts} />
-                    <Notifications 
+                    <h2>Posts Activity</h2>
+                    <PostList 
+                        className="post-list"
+                        posts={posts}
+                    />
+                    <Notifications
+                        className="notifications" 
                         notifications={notifications}
                     />
                 </div>

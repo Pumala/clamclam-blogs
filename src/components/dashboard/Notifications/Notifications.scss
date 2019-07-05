@@ -1,6 +1,9 @@
 @import '../../../styles/styles.scss';
 
 .notifications {
+    h2 {
+        @extend %dash-headers;
+    }
     width: 50%;
     display: inline-block;
     height: 100vh;

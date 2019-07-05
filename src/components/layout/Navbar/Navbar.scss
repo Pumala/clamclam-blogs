@@ -1,16 +1,27 @@
 @import '../../../styles/styles.scss';
 
 nav {
+
+    @extend %black-border-bottom;
+    
     .wrapper {
         padding: 20px 15px;
         font-size: 24px;
-        @extend %black-border-bottom;
         .brand-logo {
             font-weight: 700;
             // font-family: 'Barriecito', cursive;
         }
         .fas {
             float: right;
+        }
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    nav {
+        .wrapper {
+            width: 1000px;
+            margin: 0 auto;
         }
     }
 }

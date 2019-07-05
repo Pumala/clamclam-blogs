@@ -1,5 +1,17 @@
 @import '../../../styles/styles.scss';
 
 .dashboard {
-    
+    padding: 20px;
+    h2 {
+        @extend %dash-headers;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .post-list {
+        width: 100%;
+    }
+    .notifications {
+        display: none;
+    }
 }

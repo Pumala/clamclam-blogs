@@ -9,6 +9,8 @@ import Register from '../src/components/auth/Register/Register';
 import CreatePost from '../src/components/posts/CreatePost/CreatePost';
 import Profile from '../src/components/profile/Profile/Profile';
 
+import './App.scss';
+
 function App() {
   return (
     <Router>

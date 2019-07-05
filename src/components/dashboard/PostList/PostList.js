@@ -4,6 +4,8 @@ import './PostList.scss';
 
 const PostList = ({ posts }) => {
 
+    console.log('PROPS IN POST list ..... :', posts);
+
     const list = posts ? (
         posts.map((post, id) =>
             (
@@ -25,7 +27,7 @@ const PostList = ({ posts }) => {
     } else {
         return (
             <div>
-                No results
+                <p>No results</p>
             </div>
         )
     }

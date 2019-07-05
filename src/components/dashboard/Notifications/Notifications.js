@@ -15,7 +15,7 @@ const Notifications = ({ notifications }) => {
 
     return (
         <div className="notifications">
-            <p>Notifications</p>
+            <h2>Notifications</h2>
             {
                 notificationList
             }

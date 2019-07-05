@@ -4,10 +4,13 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
+import './PostDetails.scss'
 
 const PostDetails = (props) => {
 
-    const { title, content, firstName, lastName, createdAt } = props.post; 
+    console.log('PROPS IN POST DETAILS:', props);
+
+    const { title, content, firstName, lastName, createdAt = '' } = props.post; 
 
     const { auth } = props;
 
@@ -15,11 +18,14 @@ const PostDetails = (props) => {
         return <Redirect to="/login"></Redirect>
     } else {
         return (
-            <div>
+            <div className="post-details">
                 <h2>{ title }</h2>
-                <p>{content}</p>
-                <h4>Posted by { firstName } { lastName }</h4>
-                <p>Ceated: { moment(createdAt.toDate()).calendar() }</p>
+                <p className="posted-by">Posted by { firstName } { lastName }</p>
+                <p className="content">{content}</p>
+                {
+                    createdAt &&
+                    <p>Created: { moment(createdAt.toDate()).calendar() }</p>
+                }
             </div>
         );
     }

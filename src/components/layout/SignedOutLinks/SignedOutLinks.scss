@@ -2,6 +2,7 @@
 
 ul {
     @extend %nav-list;
+    @extend %black-border-top;
     li {
         @extend %nav-links;
         a {

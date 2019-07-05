@@ -1,1 +1,13 @@
 @import '../../../styles/styles.scss';
+
+.post-details {
+    padding: 20px;
+    .posted-by {
+        margin-top: 5px;
+        font-size: 14px;
+        font-weight: 300;
+    }
+    .content {
+        margin: 20px 0;
+    }
+}

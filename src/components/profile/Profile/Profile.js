@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { getUserPosts } from '../../../store/actions/postActions';
-
+import PostList from '../../dashboard/PostList/PostList';
+import './Profile.scss';
 class Profile extends Component {
 
     componentDidMount() {
@@ -13,10 +14,12 @@ class Profile extends Component {
     render() {
 
         console.log('state in PROFILE:', this.props.posts);
+        const { userPosts : posts } = this.props.posts;
 
         return (
-            <div>
-                <h1>Profile</h1>
+            <div className="profile">
+                <h2>Profile</h2>
+                <PostList posts={posts} />
             </div>
         );
     }

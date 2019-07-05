@@ -43,7 +43,10 @@ export const getUserPosts = () => {
                 const userPosts = snapshot.docs.filter(doc => {
                     return doc.data().authorId === authorId
                 }).map(doc => {
-                    return doc.data()
+                    return {
+                        ...doc.data(),
+                        id: doc.id
+                    }
                 });
 
                 dispatch({
