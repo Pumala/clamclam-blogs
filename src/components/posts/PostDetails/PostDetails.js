@@ -1,43 +1,76 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
-import './PostDetails.scss'
+import { Link } from 'react-router-dom';
+import { EditPost } from '../EditPost/EditPost';
+import './PostDetails.scss';
 
-const PostDetails = (props) => {
+// TODO: change to class component
+// with a boolean isEditMode
+// import EditPost
 
-    console.log('PROPS IN POST DETAILS:', props);
 
-    const { title, content, firstName, lastName, createdAt = '' } = props.post; 
+class PostDetails extends Component {
 
-    const { auth } = props;
+    render() {
 
-    if (!auth.uid) {
-        return <Redirect to="/login"></Redirect>
-    } else {
-        return (
-            <div className="post-details">
-                <h2>{ title }</h2>
-                <p className="posted-by">Posted by { firstName } { lastName }</p>
-                <p className="content">{content}</p>
-                {
-                    createdAt &&
-                    <p>Created: { moment(createdAt.toDate()).calendar() }</p>
-                }
-            </div>
-        );
+        this.state = {
+            editPost: false
+        }
+
+        console.log('PROPS IN POST DETAILS:', this.props);
+
+        const { authorId, title, content, firstName, lastName, createdAt = '', lastUpdatedAt = '' } = this.props.post;
+
+        const { auth, postId } = this.props;
+
+        if (!auth.uid) {
+            return <Redirect to="/login"></Redirect>
+        } else {
+            return (
+                <div className="post-details">
+                    <h2>{title}</h2>
+                    <p className="posted-by">Posted by {firstName} {lastName}</p>
+                    <p className="content">{content}</p>
+                    {
+                        createdAt &&
+                        <p>Created: {moment(createdAt.toDate()).calendar()}</p>
+                    }
+                    {
+                        lastUpdatedAt && 
+                        <p>Last Updated: {moment(lastUpdatedAt.toDate()).calendar()}</p>
+                    }
+                    {
+                        auth.uid === authorId &&
+                        
+
+                        <button>
+                            <Link to={{
+                                pathname: `/post/${postId}/edit`,
+                                state: this.props.post
+                            }}>Edit</Link>
+                        </button>
+                    }
+                </div>
+            );
+        }
     }
 
 };
 
 const mapStateToProps = (state, ownProps) => {
+
+    console.log('state in post details: ', state);
+
     const postId = ownProps.match.params.id;
     const posts = state.firestore.data.posts;
     const post = posts ? posts[postId] : '';
     return {
         post,
+        postId,
         auth: state.firebase.auth
     }
 }

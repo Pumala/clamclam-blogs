@@ -9,6 +9,7 @@ import Register from '../src/components/auth/Register/Register';
 import CreatePost from '../src/components/posts/CreatePost/CreatePost';
 import Profile from '../src/components/profile/Profile/Profile';
 import NotFound from '../src/components/not-found/NotFound/NotFound';
+import EditPost from '../src/components/posts/EditPost/EditPost';
 
 import './App.scss';
 
@@ -23,7 +24,8 @@ function App() {
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
             <Route path="/create" component={CreatePost} />
-            <Route path="/post/:id" component={PostDetails} />
+            <Route exact path="/post/:id" component={PostDetails} />
+            <Route path="/post/:id/edit" component={EditPost} />
             <Route path="/profile/:id" component={Profile} />
             <Route component={NotFound} />
           </Switch>

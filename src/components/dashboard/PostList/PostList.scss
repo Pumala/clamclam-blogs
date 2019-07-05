@@ -5,4 +5,7 @@
     display: inline-block;
     height: 100vh;
     // padding: 20px;
+    h2 {
+        @extend %dash-headers;
+    }
 }

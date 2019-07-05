@@ -23,6 +23,18 @@ const postsReducer = (state = defaultState, action) => {
                 postErr: action.err.message,
                 userPosts: []
             };
+        case 'UPDATE_POST_SUCCESS':
+            return {
+                ...state,
+                postErr: null,
+                userPosts: []
+            };
+        case 'UPDATE_POST_ERROR':
+        return {
+            ...state,
+            postErr: action.err.message,
+            userPosts: null
+        }
         default:
             return {
                 ...state,

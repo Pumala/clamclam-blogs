@@ -16,7 +16,8 @@ export const createPost = (post) => {
             firstName: profile.firstName,
             lastName: profile.lastName,
             authorId,
-            createdAt: new Date()
+            createdAt: new Date(),
+            lastUpdatedAt: null
         }).then(res => {
             // then proceed with dispatch
             dispatch({
@@ -57,6 +58,35 @@ export const getUserPosts = () => {
             .catch(err => {
                 console.log('err retrieving posts..', err)
             });
+
+    }
+}
+
+export const updateUserPost = (updatedPost) => {
+
+    console.log('ACTION CREATOR: update post info A:', updatedPost);
+
+    return (dispatch, getState, { getFirestore }) => {
+
+        console.log('ACTION CREATOR: update post info B:', updatedPost);
+
+        const firestore = getFirestore();
+
+        firestore.collection(
+            'posts'
+        ).doc(updatedPost.id).set({
+            ...updatedPost,
+            lastUpdatedAt: new Date()   
+        }).then(res => {
+            dispatch({
+                type: 'UPDATE_POST_SUCCESS'
+            });
+        }).catch(err => {
+            console.log('err updating...', err);
+            dispatch({
+                type: 'UPDATE_POST_ERROR'
+            });
+        });
 
     }
 }

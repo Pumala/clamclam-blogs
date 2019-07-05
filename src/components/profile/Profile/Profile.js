@@ -18,8 +18,10 @@ class Profile extends Component {
 
         return (
             <div className="profile">
-                <h2>Profile</h2>
-                <PostList posts={posts} />
+                <PostList 
+                    posts={posts} 
+                    title={'Profile'}
+                />
             </div>
         );
     }

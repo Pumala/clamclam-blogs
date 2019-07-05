@@ -16,10 +16,10 @@ class Dashboard extends Component {
         } else {
             return (
                 <div className="dashboard">
-                    <h2>Posts Activity</h2>
                     <PostList 
                         className="post-list"
                         posts={posts}
+                        title={'Posts Activity'}
                     />
                     <Notifications
                         className="notifications" 

@@ -2,7 +2,7 @@ import React from 'react';
 import PostItem from '../PostItem/PostItem';
 import './PostList.scss';
 
-const PostList = ({ posts }) => {
+const PostList = ({ posts, title }) => {
 
     console.log('PROPS IN POST list ..... :', posts);
 
@@ -19,6 +19,7 @@ const PostList = ({ posts }) => {
     if (posts && posts.length > 0) {
         return (
             <div className="post-list">
+                <h2>{title}</h2>
                 {
                     list
                 }
