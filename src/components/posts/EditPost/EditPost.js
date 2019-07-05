@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './EditPost.scss';
 import { Link } from 'react-router-dom';
-import { updateUserPost } from '../../../store/actions/postActions';
+import { updateUserPost, deleteUserPost } from '../../../store/actions/postActions';
 import { connect } from 'react-redux';
 
 class EditPost extends Component {
@@ -21,10 +21,6 @@ class EditPost extends Component {
         });
     }
 
-    cancelAndGoBack = () => {
-        this.props.history.goBack()
-    }
-
     handlePostUpdate = () => {
         this.props.updateUserPost(this.state);
         
@@ -34,7 +30,15 @@ class EditPost extends Component {
             pathname: `/post/${this.state.id}`,
             state: this.state
         });
-    }
+    };
+
+    handlePostDeletion = () => {
+
+        console.log('DELETEING::', this.state);
+        this.props.deleteUserPost(this.state);
+
+        this.props.history.push('/');
+    };
 
     render() {
 
@@ -54,6 +58,7 @@ class EditPost extends Component {
                     </div>
                     <button><Link to={`/post/${id}`}>Cancel</Link></button>
                     <button onClick={this.handlePostUpdate}>Save</button>
+                    <button onClick={this.handlePostDeletion}>Delete</button>
                 </form>
             );
         } else {
@@ -68,7 +73,8 @@ class EditPost extends Component {
 const mapDispatchToProps = dispatch => {
 
     return {
-        updateUserPost : (updatedPost) => dispatch(updateUserPost(updatedPost))
+        updateUserPost : (updatedPost) => dispatch(updateUserPost(updatedPost)),
+        deleteUserPost : (deletedPost) => dispatch(deleteUserPost(deletedPost))
     }
 }
 

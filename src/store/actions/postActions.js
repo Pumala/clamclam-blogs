@@ -90,3 +90,27 @@ export const updateUserPost = (updatedPost) => {
 
     }
 }
+
+export const deleteUserPost = (deletedPost) => {
+    return (dispatch, getState, { getFirestore }) => {
+        console.log('want to DELETE post....', deletedPost);
+
+        const firestore = getFirestore();
+
+        firestore.collection(
+            'posts'
+        ).doc(deletedPost.id).delete()
+        .then(res => {
+            console.log('success deleting...', res);
+            dispatch({
+                type: 'DELETE_POST_SUCCESS'
+            });
+        }).catch(err => {
+            console.log('err deleting...', err);
+            dispatch({
+                type: 'DELETE_POST_ERROR'
+            });
+        });
+
+    }
+};
