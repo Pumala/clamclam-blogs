@@ -6,8 +6,6 @@ import { connect } from 'react-redux';
 
 class EditPost extends Component {
 
-    // const { authorId, content, createdAt, firstName, title } = this.props.location.state;
-
     state = {
         ...this.props.location.state,
         id: this.props.match.params.id
@@ -34,15 +32,12 @@ class EditPost extends Component {
 
     handlePostDeletion = () => {
 
-        console.log('DELETEING::', this.state);
         this.props.deleteUserPost(this.state);
 
         this.props.history.push('/');
     };
 
     render() {
-
-        console.log('props in edit post:', this.props);
 
         const { id, title, content } = this.state;
 

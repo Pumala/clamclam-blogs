@@ -5,23 +5,11 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import { EditPost } from '../EditPost/EditPost';
 import './PostDetails.scss';
-
-// TODO: change to class component
-// with a boolean isEditMode
-// import EditPost
-
 
 class PostDetails extends Component {
 
     render() {
-
-        this.state = {
-            editPost: false
-        }
-
-        console.log('PROPS IN POST DETAILS:', this.props);
 
         const { authorId, title, content, firstName, lastName, createdAt = '', lastUpdatedAt = '' } = this.props.post;
 
@@ -35,7 +23,13 @@ class PostDetails extends Component {
 
                     <div className="header-wrapper">
                         <h2>{title}</h2>
-                        <p className="posted-by">Posted by {firstName} {lastName}</p>
+                        <p className="posted-by">Posted by
+                            <span>
+                                <Link to={`/profile/${authorId}`}>
+                                    {firstName} {lastName}
+                                </Link>
+                            </span>
+                        </p>
                     </div>
                     {
                         auth.uid === authorId &&
@@ -49,11 +43,11 @@ class PostDetails extends Component {
                     <p className="content">{content}</p>
                     {
                         createdAt &&
-                        <p>Created: {moment(createdAt.toDate()).calendar()}</p>
+                        <p className="date"><span>Created:</span> {moment(createdAt.toDate()).calendar()}</p>
                     }
                     {
                         lastUpdatedAt &&
-                        <p>Last Updated: {moment(lastUpdatedAt.toDate()).calendar()}</p>
+                        <p className="date"><span>Updated:</span> {moment(lastUpdatedAt.toDate()).calendar()}</p>
                     }
                 </div>
             );
@@ -63,8 +57,6 @@ class PostDetails extends Component {
 };
 
 const mapStateToProps = (state, ownProps) => {
-
-    console.log('state in post details: ', state);
 
     const postId = ownProps.match.params.id;
     const posts = state.firestore.data.posts;

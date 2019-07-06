@@ -1,12 +1,13 @@
 @import '../../../styles/styles.scss';
 
 .notifications {
+    padding: 20px;
     h2 {
         @extend %dash-headers;
     }
     width: 50%;
     display: inline-block;
-    height: 100vh;
+    // height: 100vh;
     float: right;
     // padding: 20px;
 }

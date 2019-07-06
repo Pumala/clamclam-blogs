@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Notifications from '../Notifications/Notifications';
-import PostList from '../PostList/PostList';
+import PostList from '../../posts/PostList/PostList';
 import './Dashboard.scss';
 import { connect } from 'react-redux';
 import { compose } from 'redux';

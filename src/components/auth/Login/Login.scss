@@ -4,7 +4,7 @@ form {
     @extend %form-auth;
 
     h2 {
-        @extend %form-title;
+        @extend %form-title-mobile;
     }
     div {
         margin-bottom: 20px;
@@ -15,5 +15,14 @@ form {
 
     button[type="submit"] {
         @extend %submit-btn;
+    }
+}
+
+@media screen and (min-width: 850px) {
+    form {
+        h2 {
+            margin-bottom: 50px;
+            font-size: 32px;
+        }
     }
 }

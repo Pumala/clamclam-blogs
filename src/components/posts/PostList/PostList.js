@@ -4,8 +4,6 @@ import './PostList.scss';
 
 const PostList = ({ posts, title }) => {
 
-    console.log('PROPS IN POST list ..... :', posts);
-
     const list = posts ? (
         posts.map((post, id) =>
             (

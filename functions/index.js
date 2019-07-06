@@ -21,7 +21,8 @@ const createNotification = notification => {
             console.log('SUCCESS CREATING NOTIFICATION: ', notification);
         })
         .catch(err => {
-            console.log('ERROR CREATING NOTIFICATION: ', err);
+            console.log('ERROR CREATING NOTIFICATION: OBJ:', notification);
+            console.log('ERROR CREATING NOTIFICATION: MESSAGE:', err);
         });
 };
 
@@ -35,7 +36,8 @@ exports.postCreatedNotification = functions.firestore.document('posts/{postId}')
     const notification = {
         action: 'added a new post',
         author: `${post.firstName} ${post.lastName}`,
-        time: admin.firestore.FieldValue.serverTimestamp()
+        time: admin.firestore.FieldValue.serverTimestamp(),
+        authorId: post.authorId
     }
 
     return createNotification(notification);
@@ -50,7 +52,8 @@ exports.userCreatedNotification = functions.firestore.document('users/{userId}')
     const notification = {
         action: 'joined',
         author: `${user.firstName} ${user.lastName}`,
-        time: admin.firestore.FieldValue.serverTimestamp()
+        time: admin.firestore.FieldValue.serverTimestamp(),
+        authorId: doc.id
     }
 
     return createNotification(notification);
@@ -60,12 +63,15 @@ exports.userCreatedNotification = functions.firestore.document('users/{userId}')
 // listen for when a post has been deleted
 exports.postDeletedNotification = functions.firestore.document('posts/{postId}').onDelete(doc => {
 
-    const user = doc.data();
+    // get the newly created post data
+    const post = doc.data();
 
+    // set up new notification object
     const notification = {
-        action: 'deleted a post',
-        author: `${user.firstName} ${user.lastName}`,
-        time: admin.firestore.FieldValue.serverTimestamp()
+        action: 'updated a new post',
+        author: `${post.firstName} ${post.lastName}`,
+        time: admin.firestore.FieldValue.serverTimestamp(),
+        authorId: post.authorId
     }
 
     return createNotification(notification);
@@ -75,12 +81,15 @@ exports.postDeletedNotification = functions.firestore.document('posts/{postId}')
 // listen for when a post has been updated
 exports.postUpdatedNotification = functions.firestore.document('posts/{postId}').onUpdate(doc => {
 
-    const user = doc.data();
+    // get the newly created post data
+    const post = doc.data();
 
+    // set up new notification object
     const notification = {
-        action: 'updated a post',
-        author: `${user.firstName} ${user.lastName}`,
-        time: admin.firestore.FieldValue.serverTimestamp()
+        action: 'updated a new post',
+        author: `${post.firstName} ${post.lastName}`,
+        time: admin.firestore.FieldValue.serverTimestamp(),
+        authorId: post.authorId
     }
 
     return createNotification(notification);

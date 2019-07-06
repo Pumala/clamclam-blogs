@@ -1,8 +1,11 @@
 @import '../../../styles/styles.scss';
 
 .profile {
-    padding: 20px;
+    // padding: 20px;
     h2 {
         @extend %dash-headers;
+    }
+    .post-list {
+        width: 100%;
     }
 }

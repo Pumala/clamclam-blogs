@@ -1,13 +1,13 @@
 @import '../../../styles/styles.scss';
 
 .dashboard {
-    padding: 20px;
+    // padding: 20px;
     h2 {
         @extend %dash-headers;
     }
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 560px) {
     .post-list {
         width: 100%;
     }
