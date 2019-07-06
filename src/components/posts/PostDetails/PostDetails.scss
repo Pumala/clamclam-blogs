@@ -2,6 +2,12 @@
 
 .post-details {
     padding: 20px;
+    max-width: 550px;
+    margin: 0 auto;
+    .header-wrapper {
+        display: inline-block;
+    }
+
     .posted-by {
         margin-top: 5px;
         font-size: 14px;
@@ -9,5 +15,13 @@
     }
     .content {
         margin: 20px 0;
+        white-space: pre-wrap;
+    }
+    .edit-btn {
+        border: 1px solid #222;
+        padding: 8px 25px;
+        border-radius: 5px;
+        margin-top: 10px;
+        float: right;
     }
 }

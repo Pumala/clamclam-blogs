@@ -58,7 +58,7 @@ exports.userCreatedNotification = functions.firestore.document('users/{userId}')
 })
 
 // listen for when a post has been deleted
-exports.postDeletedNotification = functions.firestore.document('users/{userId}').onDelete(doc => {
+exports.postDeletedNotification = functions.firestore.document('posts/{postId}').onDelete(doc => {
 
     const user = doc.data();
 
@@ -72,8 +72,8 @@ exports.postDeletedNotification = functions.firestore.document('users/{userId}')
 
 });
 
-// listen for when a post has been deleted
-exports.postUpdatedNotification = functions.firestore.document('users/{userId}').onUpdate(doc => {
+// listen for when a post has been updated
+exports.postUpdatedNotification = functions.firestore.document('posts/{postId}').onUpdate(doc => {
 
     const user = doc.data();
 

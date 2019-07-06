@@ -56,9 +56,9 @@ class EditPost extends Component {
                     <div>
                         <textarea name="content" onChange={this.handleChange} value={content}></textarea>
                     </div>
-                    <button><Link to={`/post/${id}`}>Cancel</Link></button>
-                    <button onClick={this.handlePostUpdate}>Save</button>
-                    <button onClick={this.handlePostDeletion}>Delete</button>
+                    <Link to={`/post/${id}`}>Cancel</Link>
+                    <a name="save" onClick={this.handlePostUpdate}>Save</a>
+                    <a onClick={this.handlePostDeletion}>Delete</a>
                 </form>
             );
         } else {

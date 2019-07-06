@@ -27,7 +27,8 @@ const PostList = ({ posts, title }) => {
         );
     } else {
         return (
-            <div>
+            <div className="post-list">
+                <h2>{title}</h2>
                 <p>No results</p>
             </div>
         )

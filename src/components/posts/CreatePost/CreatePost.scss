@@ -1,6 +1,9 @@
 @import '../../../styles/styles.scss';
 
 form {
+    @extend %clear-fix;
+    width: 100%;
+    margin-bottom: 30px;
     input {
         border: none;
         border-bottom: 1px solid #222;
@@ -9,9 +12,10 @@ form {
         width: 100%;
     }
     textarea {
+        white-space: pre-wrap;        
         width: 100%;
         border: 1px solid #222;
-        height: 200px;
+        height: 300px;
         padding: 10px;
         font-size: 16px;
     }

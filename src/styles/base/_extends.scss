@@ -22,7 +22,7 @@
 // form styles
 %form-auth {
     // padding: 10px;
-    max-width: 400px;
+    max-width: 550px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -45,13 +45,20 @@
     padding: 12px 50px;
     border-radius: 5px;
     border: none;
-    background-color: royalblue;
+    background-color: #222;
     color: #fff;
     font-size: 16px;
     font-weight: bold;
+    float: right;
 }
 
 %dash-headers {
     margin-bottom: 30px;
     font-size: 32px;
+}
+
+%clear-fix {
+    clear: both;
+    content: "";
+    display: table;
 }

@@ -32,27 +32,28 @@ class PostDetails extends Component {
         } else {
             return (
                 <div className="post-details">
-                    <h2>{title}</h2>
-                    <p className="posted-by">Posted by {firstName} {lastName}</p>
+
+                    <div className="header-wrapper">
+                        <h2>{title}</h2>
+                        <p className="posted-by">Posted by {firstName} {lastName}</p>
+                    </div>
+                    {
+                        auth.uid === authorId &&
+
+
+                        <Link className="edit-btn" to={{
+                            pathname: `/post/${postId}/edit`,
+                            state: this.props.post
+                        }}>Edit</Link>
+                    }
                     <p className="content">{content}</p>
                     {
                         createdAt &&
                         <p>Created: {moment(createdAt.toDate()).calendar()}</p>
                     }
                     {
-                        lastUpdatedAt && 
+                        lastUpdatedAt &&
                         <p>Last Updated: {moment(lastUpdatedAt.toDate()).calendar()}</p>
-                    }
-                    {
-                        auth.uid === authorId &&
-                        
-
-                        <button>
-                            <Link to={{
-                                pathname: `/post/${postId}/edit`,
-                                state: this.props.post
-                            }}>Edit</Link>
-                        </button>
                     }
                 </div>
             );
