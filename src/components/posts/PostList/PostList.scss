@@ -3,6 +3,9 @@
 .post-list {
     width: 50%;
     display: inline-block;
-    height: 100vh;
-    // padding: 20px;
+    // height: 100vh;
+    padding: 20px;
+    h2 {
+        @extend %dash-headers;
+    }
 }

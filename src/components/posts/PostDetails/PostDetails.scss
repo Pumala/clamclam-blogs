@@ -2,6 +2,21 @@
 
 .post-details {
     padding: 20px;
+    max-width: 550px;
+    margin: 0 auto;
+    @extend %clear-fix;
+    .header-wrapper {
+        display: inline-block;
+        h2 {
+            margin-right: 75px;
+        }
+        p {
+            span {
+                @extend %space-left;
+            }
+        }
+    }
+
     .posted-by {
         margin-top: 5px;
         font-size: 14px;
@@ -9,5 +24,22 @@
     }
     .content {
         margin: 20px 0;
+        white-space: pre-wrap;
+        line-height: 1.75em;
+    }
+    .date {
+        margin-bottom: 10px;
+        span {
+            font-weight: 700;
+        }
+    }
+    .edit-btn {
+        border: 1px solid #222;
+        padding: 8px 15px;
+        border-radius: 5px;
+        // margin-top: 10px;
+        // float: right;
+        position: absolute;
+        right: 20px;
     }
 }

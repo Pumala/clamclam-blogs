@@ -1,34 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { firestoreConnect } from 'react-redux-firebase';
-import { getUserPosts } from '../../../store/actions/postActions';
-import PostList from '../../dashboard/PostList/PostList';
+import { getUserProfileDetails } from '../../../store/actions/postActions';
+import PostList from '../../posts/PostList/PostList';
 import './Profile.scss';
 class Profile extends Component {
 
     componentDidMount() {
-        this.props.getUserPosts();
+
+        this.props.getUserProfileDetails(this.props.authorId);
     }
 
     render() {
 
-        console.log('state in PROFILE:', this.props.posts);
-        const { userPosts : posts } = this.props.posts;
+        const { userPosts : posts, userDetails } = this.props.posts;
 
-        return (
-            <div className="profile">
-                <h2>Profile</h2>
-                <PostList posts={posts} />
-            </div>
-        );
+        if (posts && userDetails) {
+            return (
+                <div className="profile">
+                    <PostList 
+                        className="post-list"
+                        posts={posts} 
+                        title={ `${userDetails.firstName} ${userDetails.lastName}'s Profile`  }
+                    />
+                </div>
+            );
+        } else {
+            return null;
+        }
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
-
     return {
-        posts: state.posts
+        posts: state.posts,
+        authorId: ownProps.match.params.id
     }
 }
 
@@ -36,7 +41,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
 
     return {
-        getUserPosts : () => dispatch(getUserPosts())
+        getUserProfileDetails : (profileId) => dispatch(getUserProfileDetails(profileId))
     }
 }
 

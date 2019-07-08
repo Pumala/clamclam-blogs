@@ -1,0 +1,23 @@
+@import '../../../styles/styles.scss';
+
+.post {
+    
+    margin-bottom: 25px;
+
+    a {
+        margin-bottom: 5px;
+    }
+    h4 {
+        margin-bottom: 5px;
+        font-weight: 400;
+        span {
+            @extend %space-left;
+        }
+    }
+    p {
+        font-weight: 300;
+        span {
+            font-weight: 700;
+        }
+    }
+}

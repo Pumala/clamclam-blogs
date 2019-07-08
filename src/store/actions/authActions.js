@@ -58,8 +58,7 @@ export const signUpUser = (newUserInfo) => {
                 'users'
             ).doc(res.user.uid).set({
                 firstName: newUserInfo.firstName,
-                lastName: newUserInfo.lastName,
-                initials: (newUserInfo.firstName[0] + newUserInfo.firstName[0]).toUpperCase()
+                lastName: newUserInfo.lastName
             })
 
         }).then(() => {

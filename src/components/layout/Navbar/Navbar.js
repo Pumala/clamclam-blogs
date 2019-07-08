@@ -4,7 +4,6 @@ import './Navbar.scss';
 import SignedInLinks from '../SignedInLinks/SignedInLinks';
 import SignedOutLinks from '../SignedOutLinks/SignedOutLinks';
 import { connect } from 'react-redux';
-import { signInUser } from '../../../store/actions/authActions';
 
 class Navbar extends Component {
 
@@ -26,7 +25,7 @@ class Navbar extends Component {
         return (
             <nav>
                 <div className="wrapper">
-                    <Link className="brand-logo" to="/">ClamClam Blogs</Link>
+                    <Link className="brand-logo" to="/">OurWordsMove</Link>
                     {
                         !showNavLinks ? <i className="fas fa-bars" onClick={this.toggleNavLinksView}></i> : <i className="fas fa-times" onClick={this.toggleNavLinksView}></i>
                     }

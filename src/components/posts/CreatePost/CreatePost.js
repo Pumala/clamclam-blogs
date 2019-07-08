@@ -66,7 +66,6 @@ class CreatePost extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log('state in create post:', state);
     return {
         auth: state.firebase.auth
     }

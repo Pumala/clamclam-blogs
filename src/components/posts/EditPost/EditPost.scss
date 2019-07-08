@@ -1,0 +1,16 @@
+.edit {
+    input {
+        border: 1px solid #222;
+    }
+    a {
+        border: 1px solid #222;
+        padding: 8px 24px;
+        border-radius: 0;
+        margin-top: 10px;
+        font-size: 16px;
+        &[name="save"] {
+            border-left: none;
+            border-right: none;
+        }
+    }
+}
