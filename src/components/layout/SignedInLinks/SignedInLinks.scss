@@ -11,3 +11,25 @@ ul {
         }
     }
 }
+
+@media screen and (min-width: 768px) {
+    ul {
+        display: inline-block;
+        position: absolute;
+        right: 40px;
+        top: 25px;
+        border: 0;
+        width: auto !important;
+        border-top: none !important;
+        li {
+            display: inline-block !important;
+            a {
+                border: 0;
+                margin-left: 50px;
+                padding: 0 !important;
+                width: fit-content !important;
+                border-bottom: none !important;
+            }
+        }
+    }
+}

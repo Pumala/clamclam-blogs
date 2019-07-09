@@ -2,6 +2,7 @@
 
 nav {
 
+    position: relative;
     @extend %black-border-bottom;
     
     .wrapper {
@@ -14,6 +15,16 @@ nav {
         .fas {
             float: right;
             cursor: pointer;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    nav {
+        .wrapper {
+            .fas {
+                display: none;
+            }
         }
     }
 }
