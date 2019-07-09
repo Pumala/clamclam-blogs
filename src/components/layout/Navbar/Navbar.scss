@@ -2,28 +2,33 @@
 
 nav {
 
-    position: relative;
+    // position: relative;
     @extend %black-border-bottom;
     
-    .wrapper {
-        padding: 20px 15px;
-        font-size: 24px;
-        .brand-logo {
-            font-weight: 700;
-            // font-family: 'Barriecito', cursive;
-        }
-        .fas {
-            float: right;
-            cursor: pointer;
+    .outer-wrapper {
+        position: relative;
+        .inner-wrapper {
+            font-size: 24px;
+            padding: 20px 15px;
+            .brand-logo {
+                font-weight: 700;
+                // font-family: 'Barriecito', cursive;
+            }
+            .fas {
+                float: right;
+                cursor: pointer;
+            }
         }
     }
 }
 
 @media screen and (min-width: 768px) {
     nav {
-        .wrapper {
-            .fas {
-                display: none;
+        .outer-wrapper {
+            .inner-wrapper {
+                .fas {
+                    display: none;
+                }
             }
         }
     }
@@ -31,7 +36,8 @@ nav {
 
 @media screen and (min-width: 1000px) {
     nav {
-        .wrapper {
+        .outer-wrapper {
+            position: relative;
             width: 1000px;
             margin: 0 auto;
         }

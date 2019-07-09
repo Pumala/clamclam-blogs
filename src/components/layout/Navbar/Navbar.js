@@ -40,29 +40,31 @@ class Navbar extends Component {
 
         return (
             <nav>
-                <div className="wrapper">
-                    <Link className="brand-logo" to="/">OurWordsMove</Link>
+                <div className="outer-wrapper">
+                    <div className="inner-wrapper">
+                        <Link className="brand-logo" to="/">OurWordsMove</Link>
+                        {
+                            width < 768 && !showNavLinks && <i className="fas fa-bars" onClick={this.toggleNavLinksView}></i>
+                        }
+                        {
+                            width < 768 && showNavLinks && <i className="fas fa-times" onClick={this.toggleNavLinksView}></i>
+                        }
+                    </div>
+
                     {
-                        width < 768 && !showNavLinks && <i className="fas fa-bars" onClick={this.toggleNavLinksView}></i> 
+                        width > 767 && isUserSignedIn && <SignedInLinks profile={profile} />
                     }
                     {
-                        width < 768 && showNavLinks && <i className="fas fa-times" onClick={this.toggleNavLinksView}></i>
+                        width > 767 && !isUserSignedIn && <SignedOutLinks />
+                    }
+
+                    {
+                        width < 768 && isUserSignedIn && showNavLinks && <SignedInLinks profile={profile} />
+                    }
+                    {
+                        width < 768 && !isUserSignedIn && showNavLinks && <SignedOutLinks />
                     }
                 </div>
-
-                {
-                    width > 767 && isUserSignedIn && <SignedInLinks profile={ profile } />
-                }
-                {
-                    width > 767 && !isUserSignedIn && <SignedOutLinks />
-                }
-
-                {
-                    width < 768 && isUserSignedIn && showNavLinks && <SignedInLinks profile={ profile } />
-                }
-                {
-                    width < 768 && !isUserSignedIn && showNavLinks && <SignedOutLinks />
-                }
             </nav>
         );
     }
@@ -71,9 +73,9 @@ class Navbar extends Component {
 
 const mapStateToProps = state => {
     return {
-        isUserSignedIn : !state.firebase.auth.isEmpty ? true : false,
+        isUserSignedIn: !state.firebase.auth.isEmpty ? true : false,
         profile: state.firebase.profile
     }
 }
 
-export default  connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps)(Navbar);
