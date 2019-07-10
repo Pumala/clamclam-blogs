@@ -31,8 +31,6 @@ class Login extends Component {
 
         const { auth, authError } = this.props;
 
-        console.log('AUTH LOGIN', authError);
-
         if (auth.uid) {
             return <Redirect to="/"></Redirect>
         } else {
