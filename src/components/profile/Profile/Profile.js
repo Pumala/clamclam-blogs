@@ -20,7 +20,7 @@ class Profile extends Component {
                     <PostList 
                         className="post-list"
                         posts={posts} 
-                        title={ `${userDetails.firstName} ${userDetails.lastName}'s Profile`  }
+                        title={ `${userDetails.firstName} ${userDetails.lastName}'s Posts`  }
                     />
                 </div>
             );

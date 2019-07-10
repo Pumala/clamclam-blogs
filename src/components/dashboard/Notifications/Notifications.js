@@ -15,10 +15,12 @@ const Notifications = ({ notifications }) => {
 
     return (
         <div className="notifications">
-            <h2>Notifications</h2>
+            <div className="wrapper">
+                <h2>Recent Activity</h2>
             {
                 notificationList
             }
+            </div>
         </div>
     );
 }

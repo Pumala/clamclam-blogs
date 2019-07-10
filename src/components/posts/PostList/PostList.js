@@ -14,23 +14,39 @@ const PostList = ({ posts, title }) => {
         )
     ) : null;
 
-    if (posts && posts.length > 0) {
-        return (
-            <div className="post-list">
+    return (
+        <div className="post-list">
+            <div className="wrapper">
                 <h2>{title}</h2>
                 {
-                    list
+                    posts && posts.length > 0 && list
+                }
+                {
+                    !posts && <p>No results</p>
                 }
             </div>
-        );
-    } else {
-        return (
-            <div className="post-list">
-                <h2>{title}</h2>
-                <p>No results</p>
-            </div>
-        )
-    }
+        </div>
+    );
+
+
+
+    // if (posts && posts.length > 0) {
+    //     return (
+    //         <div className="post-list">
+    //             <h2>{title}</h2>
+    //             {
+    //                 list
+    //             }
+    //         </div>
+    //     );
+    // } else {
+    //     return (
+    //         <div className="post-list">
+    //             <h2>{title}</h2>
+    //             <p>No results</p>
+    //         </div>
+    //     )
+    // }
 }
 
 export default PostList;

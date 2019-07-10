@@ -19,7 +19,7 @@ class Dashboard extends Component {
                     <PostList 
                         className="post-list"
                         posts={posts}
-                        title={'Posts Activity'}
+                        title={'Post Feed'}
                     />
                     <Notifications
                         className="notifications" 
@@ -52,7 +52,7 @@ export default compose(
         },
         {
             collection: 'notifications',
-            limit: 3,
+            limit: 5,
             orderBy: [
                 'time',
                 'desc'
