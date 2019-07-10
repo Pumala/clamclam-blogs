@@ -2,12 +2,24 @@
 
 .notifications {
     padding: 20px;
-    h2 {
-        @extend %dash-headers;
-    }
-    width: 50%;
     display: inline-block;
-    // height: 100vh;
     float: right;
-    // padding: 20px;
+    width: 50%;
+    height: 100%;
+    position: fixed;
+    // position: fixed;
+    .wrapper {
+        text-align: left;
+        width: fit-content;
+        margin: 0 auto;
+        // width: fit-content;
+        // margin: 0 auto;
+        h2 {
+            @extend %dash-headers;
+        }
+        // width: 50%;
+        // display: inline-block;
+        // float: right;
+        // padding: 20px;
+    }
 }

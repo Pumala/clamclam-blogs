@@ -9,9 +9,9 @@ admin.initializeApp(functions.config().firebase)
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
-exports.helloWorld = functions.https.onRequest((request, response) => {
-    response.send("Hello from the ZombieWorld!");
-});
+// exports.helloWorld = functions.https.onRequest((request, response) => {
+//     response.send("Hello from the ZombieWorld!");
+// });
 
 // create a new notification
 const createNotification = notification => {
@@ -30,7 +30,7 @@ const createNotification = notification => {
 exports.postCreatedNotification = functions.firestore.document('posts/{postId}').onCreate(doc => {
 
     // get the newly created post data
-    const post = doc.data();
+    let post = doc.data();
 
     // set up new notification object
     const notification = {
@@ -47,7 +47,7 @@ exports.postCreatedNotification = functions.firestore.document('posts/{postId}')
 // listen for when a user has been created
 exports.userCreatedNotification = functions.firestore.document('users/{userId}').onCreate(doc => {
 
-    const user = doc.data();
+    let user = doc.data();
 
     const notification = {
         action: 'joined',
@@ -64,11 +64,11 @@ exports.userCreatedNotification = functions.firestore.document('users/{userId}')
 exports.postDeletedNotification = functions.firestore.document('posts/{postId}').onDelete(doc => {
 
     // get the newly created post data
-    const post = doc.data();
+    let post = doc.data();
 
     // set up new notification object
     const notification = {
-        action: 'updated a new post',
+        action: 'deleted a post',
         author: `${post.firstName} ${post.lastName}`,
         time: admin.firestore.FieldValue.serverTimestamp(),
         authorId: post.authorId
@@ -79,14 +79,14 @@ exports.postDeletedNotification = functions.firestore.document('posts/{postId}')
 });
 
 // listen for when a post has been updated
-exports.postUpdatedNotification = functions.firestore.document('posts/{postId}').onUpdate(doc => {
+exports.postUpdatedNotification = functions.firestore.document('posts/{postId}').onUpdate((snapshot, context) => {
 
     // get the newly created post data
-    const post = doc.data();
+    let post = snapshot.after.data();
 
     // set up new notification object
     const notification = {
-        action: 'updated a new post',
+        action: 'updated a post',
         author: `${post.firstName} ${post.lastName}`,
         time: admin.firestore.FieldValue.serverTimestamp(),
         authorId: post.authorId

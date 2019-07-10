@@ -5,7 +5,7 @@ import moment from 'moment';
 
 const PostItem = ({ post }) => {
 
-    const { id, authorId, title, firstName, lastName, createdAt, lastUpdatedAt } = post;
+    const { id, authorId, title, firstName, lastName, createdAt, lastUpdatedAt, content } = post;
 
     return (
         <div className="post">
@@ -15,6 +15,7 @@ const PostItem = ({ post }) => {
                     <Link className="edit-btn" to={`/profile/${authorId}`}> {firstName} {lastName}</Link>
                 </span>
             </h4>
+            <p>{content.slice(0, 35)}...</p>
             {
                 lastUpdatedAt ? <p><span>Updated:</span> {moment(lastUpdatedAt.toDate()).calendar()}</p> :
                     <p><span>Created:</span> {moment(createdAt.toDate()).calendar()}</p>
