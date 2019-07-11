@@ -6,7 +6,7 @@ Create a responsive blog application where users can sign up to become a member 
 
 ### Live Demo:
 
-[Blog App](clamclamblogs.web.app)
+[Blog App](https://clamclamblogs.web.app/)
 
 ### Languages / Frameworks / Technologies used:
 
