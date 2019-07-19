@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { signInUser } from '../../../store/actions/authActions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import TestLoginCredentialsModal from '../../layout/TestLoginCredentialsModal/TestLoginCredentialsModal';
+import DemoLoginCredentialsModal from '../../layout/DemoLoginCredentialsModal/DemoLoginCredentialsModal';
 import './Login.scss';
 class Login extends Component {
 
@@ -38,7 +38,7 @@ class Login extends Component {
         } else {
             return (
                 <div className="login-form-wrapper">
-                    <TestLoginCredentialsModal />
+                    <DemoLoginCredentialsModal />
                     <form className="form">
                         <h2>Login</h2>
                         <div>
