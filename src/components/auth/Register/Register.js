@@ -40,7 +40,7 @@ class Register extends Component {
                 password
             });
         } else {
-            // prevent form submission and display error to user
+            // TODO: prevent form submission and display error to user
         }
 
     }
@@ -54,25 +54,27 @@ class Register extends Component {
         }
 
         return (
-            <form>
-                <h2>Register</h2>
-                <div>
-                    <input type="text" placeholder="First Name" name="firstName" onChange={this.handleChange} />
-                </div>
-                <div>
-                    <input type="text" placeholder="Last Name" name="lastName" onChange={this.handleChange} />
-                </div>
-                <div>
-                    <input type="text" placeholder="Email" name="email" onChange={this.handleChange} />
-                </div>
-                <div>
-                    <input type="password" placeholder="Password" name="password" onChange={this.handleChange} />
-                </div>
-                <div>
-                    <input type="password" placeholder="Confirm Password" name="confirmPassword" onChange={this.handleChange} />
-                </div>
-                <button name="submit" type="submit" onClick={this.handleSubmit}>Submit</button>
-            </form>
+            <div className="register-form-wrapper">
+                <form className="form">
+                    <h2>Register</h2>
+                    <div>
+                        <input type="text" placeholder="First Name" name="firstName" onChange={this.handleChange} />
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Last Name" name="lastName" onChange={this.handleChange} />
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Email" name="email" onChange={this.handleChange} />
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Password" name="password" onChange={this.handleChange} />
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Confirm Password" name="confirmPassword" onChange={this.handleChange} />
+                    </div>
+                    <button name="submit" type="submit" onClick={this.handleSubmit}>Submit</button>
+                </form>
+            </div>
         );
     }
 }
@@ -86,7 +88,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        signUpUser : (newUserInfo) => dispatch(signUpUser(newUserInfo))
+        signUpUser: (newUserInfo) => dispatch(signUpUser(newUserInfo))
     }
 }
 

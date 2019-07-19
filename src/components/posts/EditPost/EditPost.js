@@ -43,7 +43,7 @@ class EditPost extends Component {
 
         if (this.state) {
             return (
-                <form className="edit">
+                <form className="edit-form">
                     <h2>Edit Post</h2>
                     <div>
                         <input type="text" name="title" placeholder="Title" value={title} onChange={this.handleChange} />
