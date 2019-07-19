@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './TestLoginCredentialsModal.scss';
+import './DemoLoginCredentialsModal.scss';
 
-class TestLoginCredentialsModal extends Component {
+class DemoLoginCredentialsModal extends Component {
 
     state = {
         openModal: true
@@ -20,7 +20,7 @@ class TestLoginCredentialsModal extends Component {
                 <div className="test-login-popup">
                     <div className="wrapper">
                         <p className="test-login-creds">
-                            <span>Test Login Credentials:</span>
+                            <span>Demo Login Credentials:</span>
                             <span>Email: test123@gmail.com</span>
                             <span>Password: test123</span>
                         </p>
@@ -34,4 +34,4 @@ class TestLoginCredentialsModal extends Component {
     }
 }
 
-export default TestLoginCredentialsModal;
+export default DemoLoginCredentialsModal;
