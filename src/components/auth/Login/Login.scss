@@ -1,20 +1,33 @@
 @import '../../../styles/styles.scss';
 
-form {
-    @extend %form-auth;
-
-    h2 {
-        @extend %form-title-mobile;
-    }
-    div {
-        margin-bottom: 20px;
-        input {
-            @extend %form-input;
+.login-form-wrapper {
+    text-align: left;
+    display: grid;
+    place-items: center center;
+    height: 80vh;
+    .form {
+        @extend %form-auth;
+        width: 100%;
+    
+        h2 {
+            @extend %form-title-mobile;
+            margin-top: 0;
         }
-    }
-
-    button[type="submit"] {
-        @extend %submit-btn;
+        div {
+            input {
+                @extend %form-input;
+                font-size: 16px;
+                padding: 10px;
+                border: none;
+                border-bottom: 1px solid #222;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    
+        button[type="submit"] {
+            @extend %submit-btn;
+        }
     }
 }
 

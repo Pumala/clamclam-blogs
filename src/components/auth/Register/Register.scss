@@ -1,27 +1,39 @@
 @import '../../../styles/styles.scss';
 
-form {
+.register-form-wrapper {
+
+    text-align: left;
+    display: initial;
+    place-items: center center;
+    height: 80vh;
+
+    .form {
+        @extend %form-auth;
     
-    @extend %form-auth;
-
-    h2 {
-        @extend %form-title-mobile;
-    }
-    div {
-        margin-bottom: 20px;
-        input {
-            @extend %form-input;
+        h2 {
+            @extend %form-title-mobile;
         }
-    }
-
-    button[type="submit"] {
-        @extend %submit-btn;
+        div {
+            margin-bottom: 20px;
+            input {
+                // @extend %form-input;
+                font-size: 16px;
+                padding: 10px;
+                border: none;
+                border-bottom: 1px solid #222;
+                width: 100%;
+            }
+        }
+    
+        button[type="submit"] {
+            @extend %submit-btn;
+        }
     }
 }
 
 
 @media screen and (min-width: 850px) {
-    form {
+    .form {
         h2 {
             margin-bottom: 50px;
             font-size: 32px;

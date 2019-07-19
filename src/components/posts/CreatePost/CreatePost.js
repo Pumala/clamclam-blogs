@@ -49,7 +49,7 @@ class CreatePost extends Component {
             return <Redirect to="/login"></Redirect>
         } else {
             return (
-                <form>
+                <form className="create-post-form">
                     <h2>Create New Post</h2>
                     <div>
                         <input type="text" name="title" placeholder="Title" onChange={this.handleChange} />

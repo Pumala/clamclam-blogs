@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { signInUser } from '../../../store/actions/authActions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import TestLoginCredentialsModal from '../../layout/TestLoginCredentialsModal/TestLoginCredentialsModal';
+import './Login.scss';
 class Login extends Component {
 
     state = {
@@ -35,19 +37,22 @@ class Login extends Component {
             return <Redirect to="/"></Redirect>
         } else {
             return (
-                <form>
-                    <h2>Login</h2>
-                    <div>
-                        <input type="text" placeholder="Email" name="email" onChange={this.handleChange} />
-                    </div>
-                    <div>
-                        <input type="password" placeholder="Password" name="password" onChange={this.handleChange} />
-                    </div>
-                    <button name="submit" type="submit" onClick={this.handleSubmit}>Submit</button>
-                </form>
+                <div className="login-form-wrapper">
+                    <TestLoginCredentialsModal />
+                    <form className="form">
+                        <h2>Login</h2>
+                        <div>
+                            <input type="text" placeholder="Email" name="email" onChange={this.handleChange} />
+                        </div>
+                        <div>
+                            <input type="password" placeholder="Password" name="password" onChange={this.handleChange} />
+                        </div>
+                        <button name="submit" type="submit" onClick={this.handleSubmit}>Submit</button>
+                    </form>
+                </div>
             );
         }
-        
+
     }
 }
 
